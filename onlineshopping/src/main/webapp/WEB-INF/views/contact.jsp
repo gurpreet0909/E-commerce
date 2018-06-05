@@ -1,6 +1,6 @@
 <div class="container">
 
-	<div class="row">
+	<div>
 
 		<h1>Contact Us..</h1>
 		<hr />
