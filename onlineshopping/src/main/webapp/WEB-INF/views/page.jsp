@@ -56,10 +56,13 @@
 			<c:if test="${userClickContact == true }">
 				<%@include file="contact.jsp"%>
 			</c:if>
+			
+			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+				<%@include file="listproducts.jsp"%>
+			</c:if>
+			
 
 		</div>
-
-		<!-- /.container -->
 
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
@@ -69,7 +72,7 @@
 		<script src="${js}/bootstrap.bundle.min.js"></script>
 
 		<!--self coded javascript -->
-<%-- 		<script src="${js}/myapp.js"></script> --%>
+		<script src="${js}/myapp.js"></script>
 
 	</div>
 </body>
