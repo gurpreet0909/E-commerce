@@ -8,6 +8,7 @@
 <spring:url var="images" value="/resources/images/" />
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,12 +33,8 @@
 <!-- bootstrap readable theme -->
 <link href="${css}/bootstrap-theme-pulse.css" rel="stylesheet">
 
-<!-- bootstrap Datatable theme -->
-<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
-
 <!-- Custom CSS -->
 <link href="${css}/myapp.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -50,51 +47,24 @@
 		<!-- Page Content -->
 
 		<div class="content">
-			<!-- loading home page -->
-			<c:if test="${userClickHome == true }">
-				<%@include file="home.jsp"%>
-			</c:if>
 
-			<c:if test="${userClickAbout == true }">
-				<%@include file="about.jsp"%>
-			</c:if>
+			<div class="container">
 
-			<c:if test="${userClickContact == true }">
-				<%@include file="contact.jsp"%>
-			</c:if>
-			
-			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
-				<%@include file="listproducts.jsp"%>
-			</c:if>
-			
-			<!-- only when user click show product -->
-			<c:if test="${userClickShowProduct == true}">
-				<%@include file="singleProduct.jsp"%>
-			</c:if>
-			
+				<div class="row">
 
+					<div class="jumbotron">
+
+						<h1>${errorTitle}</h1>
+						<hr />
+						<blockquote>${errordescription}</blockquote>
+					</div>
+				</div>
+
+			</div>
 		</div>
 
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
-
-	
-	
-		<!-- jQuery -->
-		<script src="${js}/jquery.js"></script>
-		
-		<!-- Bootstrap core JavaScript -->
-		<script src="${js}/bootstrap.bundle.min.js"></script>
-		
-			<!-- jQuery data tables Plugin -->
-		<script src="${js}/jquery.dataTables.js"></script>
-		
-				<!-- DataTable BottStrap Script-->
-		<script src="${js}/dataTables.bootstrap4.js"></script>
-		
-
-		<!--self coded javascript -->
-		<script src="${js}/myapp.js"></script>
 
 	</div>
 </body>
