@@ -21,10 +21,12 @@
 
 <title>Online Shopping - ${title}</title>
 
+
 <script>
 	window.menu = '${title}';
 	window.contextRoot = '${contextRoot}';
 </script>
+
 
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +39,7 @@
 
 <!-- Custom CSS -->
 <link href="${css}/myapp.css" rel="stylesheet">
+
 
 </head>
 
@@ -72,6 +75,11 @@
 				<%@include file="singleProduct.jsp"%>
 			</c:if>
 			
+			<!-- only when user click manage product -->
+			<c:if test="${userClickManageProducts == true}">
+				<%@include file="manageProducts.jsp"%>
+			</c:if>
+			
 
 		</div>
 
@@ -81,7 +89,10 @@
 	
 	
 		<!-- jQuery -->
-		<script src="${js}/jquery.js"></script>
+		<script src="${js}/jquery.js"></script>		
+		
+		<!-- jQuery Validator-->
+		<script src="${js}/jquery.validate.js"></script>
 		
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.bundle.min.js"></script>
@@ -91,7 +102,9 @@
 		
 				<!-- DataTable BottStrap Script-->
 		<script src="${js}/dataTables.bootstrap4.js"></script>
-		
+	
+		<!-- BootBox -->
+		<script src="${js}/bootbox.min.js"></script>
 
 		<!--self coded javascript -->
 		<script src="${js}/myapp.js"></script>

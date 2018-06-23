@@ -3,6 +3,7 @@ package com.gurpreet.shoppingbackend.daoimpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,35 +20,17 @@ public class CategoryDAOImpl implements CategoryDAO {
 	private SessionFactory sessionFactory;
 
 	private static List<Category> categories = new ArrayList<>();
-	
-	static {
-
-		Category category = new Category();
-		category.setId(1);
-		category.setName("  Laptop");
-		
-
-		categories.add(category);
-
-		category = new Category();
-		category.setId(2);
-		category.setName("  Television");
-		
-
-		categories.add(category);
-
-		category = new Category();
-		category.setId(3);
-		category.setName("  Mobile");
-	
-		categories.add(category);
-
-	}
 
 	@Override
 	public List<Category> list() {
 
-		return categories;
+		String selectActiveCategory = "FROM Category where active=:active";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory)
+				.setParameter("active", true);
+		
+		
+		return query.list();
 	}
 
 	@Override
@@ -73,13 +56,32 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	public boolean update(Category category) {
 		
-		return false;
+		try {
+
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		
 	}
 
 	@Override
 	public boolean delete(Category category) {
-		
-		return false;
+	
+		category.setActive(false);
+	
+		try {
+
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 
 }
